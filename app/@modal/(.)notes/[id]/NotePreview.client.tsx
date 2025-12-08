@@ -12,12 +12,11 @@ interface NotePreviewProps {
 
 export default function NotePreview({ id }: NotePreviewProps) {
   const router = useRouter();
-  
-  console.log('NotePreview component rendered with id:', id);
-  
+
   const { data: note, isLoading, isError } = useQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
+    refetchOnMount: false,   // 🔥 додано
   });
 
   const handleClose = () => {
@@ -50,11 +49,11 @@ export default function NotePreview({ id }: NotePreviewProps) {
           <h2 className={css.title}>{note.title}</h2>
           <span className={css.tag}>{note.tag}</span>
         </header>
-        
+
         <div className={css.content}>
           <p>{note.content}</p>
         </div>
-        
+
         <footer className={css.footer}>
           <div className={css.meta}>
             <span>Створено: {new Date(note.createdAt).toLocaleDateString()}</span>

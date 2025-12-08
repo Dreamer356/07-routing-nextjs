@@ -8,11 +8,23 @@ export default function Header() {
             <Link href="/" aria-label="Home" className={css.headerLink}>
                 NoteHub
             </Link>
+
             <nav aria-label="Main Navigation">
                 <ul className={css.navigation}>
                     <li className={css.navigationItem}>
-                        <Link href="/" className={css.navigationLink}>Home</Link>
+                        <Link href="/" className={css.navigationLink}>
+                            Home
+                        </Link>
                     </li>
+
+                    {/* Обов'язковий пункт меню */}
+                    <li className={css.navigationItem}>
+                        <Link href="/notes/filter/all" className={css.navigationLink}>
+                            All Notes
+                        </Link>
+                    </li>
+
+                    {/* Ваш дропдаун або меню тегів */}
                     <li className={css.navigationItem}>
                         <TagsMenu />
                     </li>
